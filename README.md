@@ -19,7 +19,7 @@ The goals / steps of this project are the following:
 [image6]: ./CarND-Vehicle-Detection-master/output_images/labels_heatmap_and_bboxes.png
 [video1]: ./CarND-Vehicle-Detection-master/output_images/final_output_project_video.mp4
 
-##Histogram of Oriented Gradients (HOG)
+## Histogram of Oriented Gradients (HOG)
 
 The code for this step is contained in the code cell 3 of the Jupyter Notebook `writeup.ipynb`
 
@@ -30,6 +30,7 @@ I then explored different color spaces and different `skimage.hog()` parameters 
 I used the `RGB` color space and HOG parameters of `orientations=6`, `pixels_per_cell=(8)` and `cells_per_block=(2)`:
 
 I tried various combinations of parameters (cell 13) :
+
 ```python
 color_space = 'YCrCb'  # Can be RGB, HSV, LUV, HLS, YUV, YCrCb
 # Train 1 RGB, orient=6, hog_channel=0, spatial_size=(16, 16), hist_bins=16 : Test Accuracy == 0.97
@@ -52,7 +53,7 @@ hog_feat = True  # HOG features on or off
 
 I trained a linear SVM (cell 13) using the above parameters and recorded the Test Accuracy until I could get close to 1.0.
 
-##Sliding Window Search
+## Sliding Window Search
 
 I decided to search a Region Of Interest (cell 7) at scale 1.4 (cell 9) :
 
@@ -68,6 +69,7 @@ I created a heatmap from a series of frames of video, the result of `scipy.ndima
 * I closely followed the [lessons code](https://www.youtube.com/watch?v=P2zwrTM8ueA&feature=youtu.be) and experimented with the different parameters.
 
 * Heat threshold approach (cell 40) on single images was OK but was difficult to tune correctly. To improve this I would need to integrate the heatmaps over 5 to 10 frames, followed by applying the threshold :
+
 ```python
 # Apply threshold to help remove false positives
 heat = apply_threshold(heat, 1)  # shows far-left + far-right false positives
